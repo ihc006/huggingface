@@ -3,19 +3,23 @@ import torch
 from PIL import Image
 # from transformers import MllamaForConditionalGeneration, AutoProcessor
 
-from transformers import LlamaForCausalLM, LlamaTokenizer
+# from transformers import LlamaForCausalLM, LlamaTokenizer
+
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 model_id = "meta-llama/Llama-3.2-11B-Vision-Instruct"
 
-model = MllamaForConditionalGeneration.from_pretrained(
-    model_id,
-    torch_dtype=torch.bfloat16,
-    device_map="auto",
-)
-processor = AutoProcessor.from_pretrained(model_id)
+# model = MllamaForConditionalGeneration.from_pretrained(
+#    model_id,
+#    torch_dtype=torch.bfloat16,
+#    device_map="auto",
+#)
+model = AutoModelForCausalLM.from_pretrained(model_id)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+# processor = AutoProcessor.from_pretrained(model_id)
 
-url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/0052a70beed5bf71b92610a43a52df6d286cd5f3/diffusers/rabbit.jpg"
+url = "rabbit.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
 
 messages = [
