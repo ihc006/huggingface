@@ -1,7 +1,10 @@
-import requests
+import requests as rq
 import torch
 from PIL import Image
-from transformers import MllamaForConditionalGeneration, AutoProcessor
+# from transformers import MllamaForConditionalGeneration, AutoProcessor
+
+from transformers import LlamaForCausalLM, LlamaTokenizer
+
 
 model_id = "meta-llama/Llama-3.2-11B-Vision-Instruct"
 
