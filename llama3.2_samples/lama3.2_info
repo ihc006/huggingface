@@ -1,1 +1,2 @@
-info and Sample codes
+pip install torch transformers Pillow requests
+
